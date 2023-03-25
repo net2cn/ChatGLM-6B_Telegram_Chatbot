@@ -4,6 +4,7 @@ import logging
 from typing_extensions import TypedDict
 
 DEFAULT_CONFIG_PATH = "./config.json"
+DEFAULT_DATABSE_PATH = "./db.sqlite3"
 
 class Config(TypedDict):
     enabled: bool

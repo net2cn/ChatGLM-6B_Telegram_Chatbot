@@ -54,7 +54,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Welcome to ChatGLM-6b Telegram bot. Send in any message to start chatting.")
 
-@trusted_user
+@require_permission("enable")
 @log_command
 async def enable(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global ENABLED_FLAG
@@ -69,7 +69,7 @@ async def enable(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Enabled. Happy chatting~")
 
-@trusted_user
+@require_permission("disable")
 @log_command
 async def disable(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global ENABLED_FLAG
@@ -98,7 +98,7 @@ async def clear(update: Update, context: ContextTypes.DEFAULT_TYPE):
         clear_history(update.effective_chat.id)
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Current session chat history cleared.")
 
-@trusted_user
+@require_permission("reload")
 @log_command
 async def reload(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logging.info(f"User {update.message.chat.username} executed command: /{sys._getframe().f_code.co_name}")
